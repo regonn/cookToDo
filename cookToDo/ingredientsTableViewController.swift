@@ -8,22 +8,34 @@
 
 import UIKit
 
-class ingredientsTableViewController: UITableViewController {
+class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  {
 
     var ingredients = NSMutableArray()
     var ingredientModel = IngredientModel()
-    
-    @IBOutlet weak var allClearButton: UIBarButtonItem!
+
+
+    @IBOutlet weak var allClearButton: UIButton!
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ingredients = ingredientModel.all()
-        
 
+        self.ingredients = ingredientModel.all()
+        allClearButton.addTarget(self, action: "deleteAll:", forControlEvents:.TouchUpInside)
+        //self.tableView.estimatedRowHeight = 90
+        //self.tableView.rowHeight = UITableViewAutomaticDimension
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+
+    func deleteAll(sender:UIButton!) {
+        ingredientModel.deleteAll()
+        self.ingredients = ingredientModel.all()
+        self.tableView.reloadData()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,9 +61,15 @@ class ingredientsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
 
+        var webView = UIWebView()
+
         var ingredient = self.ingredients.objectAtIndex(indexPath.row) as Ingredient
-        
-        cell.textLabel!.text = ingredient.html as String
+        var html = ingredient.html as String
+
+        webView.loadHTMLString(html, baseURL: nil)
+        webView.delegate = self
+        cell.contentView.addSubview(webView)
+        //cell.textLabel!.text = ingredient.title as String
 
         return cell
     }
@@ -104,13 +122,14 @@ class ingredientsTableViewController: UITableViewController {
         var source = segue.sourceViewController as ViewController
         var ingredient: Ingredient? = source.ingredient
         var html = ingredient?.html
+        println(ingredient?.html)
+        println(ingredient?.title)
         if html != "nil" {
             ingredient!.id = ingredientModel.add(ingredient!.html, title: ingredient!.title)
-        }
-        if ingredient != nil {
             self.ingredients.addObject(ingredient!)
             self.tableView.reloadData()
         }
+
     }
 
 }

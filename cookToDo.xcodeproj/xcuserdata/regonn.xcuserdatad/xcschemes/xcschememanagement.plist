@@ -9,6 +9,16 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>importIngredient.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>shareCook.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +28,16 @@
 			<true/>
 		</dict>
 		<key>44899BAC1A9CEE8F00A10F75</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>44BC53851A9DB4DE00221195</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>44BC53981A9DBC7E00221195</key>
 		<dict>
 			<key>primary</key>
 			<true/>

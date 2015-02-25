@@ -29,7 +29,9 @@ class IngredientModel {
     
     func add(html: String, title: String) -> Int{
         var result: Int? = nil
+        println("Add ingredient")
         if let err = SD.executeChange("INSERT INTO ? (Html, Title) VALUES(?, ?)", withArgs: [ tableName, html, title]){
+            println(err)
         } else {
             let (id, err) = SD.lastInsertedRowID()
             if err != nil {
@@ -50,6 +52,7 @@ class IngredientModel {
     
     func all() -> NSMutableArray {
         var ingredients = NSMutableArray()
+        println(ingredients.count)
         let (resultSet, err) = SD.executeQuery("SELECT * FROM ? ORDER BY ID DESC", withArgs: [tableName])
         if err != nil {
             println(err)
@@ -67,5 +70,11 @@ class IngredientModel {
             }
         }
         return ingredients
+    }
+
+    func deleteAll(){
+        if let err = SD.executeChange("DELETE FROM ?", withArgs: [tableName]){
+        }else{
+        }
     }
 }

@@ -22,6 +22,9 @@
 		44899BD11A9CF2C400A10F75 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 44899BD01A9CF2C400A10F75 /* libxml2.dylib */; };
 		44899BD41A9CF4CD00A10F75 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899BD31A9CF4CD00A10F75 /* Ingredient.swift */; };
 		44899BD81A9CF5B900A10F75 /* IngredientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899BD71A9CF5B900A10F75 /* IngredientModel.swift */; };
+		44BC539E1A9DBC7E00221195 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BC539D1A9DBC7E00221195 /* ShareViewController.swift */; };
+		44BC53A01A9DBC7E00221195 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44BC539F1A9DBC7E00221195 /* MainInterface.storyboard */; };
+		44BC53A31A9DBC7E00221195 /* importIngredient.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 44BC53991A9DBC7E00221195 /* importIngredient.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +35,28 @@
 			remoteGlobalIDString = 44899B971A9CEE8F00A10F75;
 			remoteInfo = cookToDo;
 		};
+		44BC53A11A9DBC7E00221195 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44899B901A9CEE8F00A10F75 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44BC53981A9DBC7E00221195;
+			remoteInfo = importIngredient;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		44BC53941A9DB4DE00221195 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				44BC53A31A9DBC7E00221195 /* importIngredient.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		44899B981A9CEE8F00A10F75 /* cookToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cookToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +79,12 @@
 		44899BD21A9CF49100A10F75 /* cookToDo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cookToDo-Bridging-Header.h"; sourceTree = "<group>"; };
 		44899BD31A9CF4CD00A10F75 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		44899BD71A9CF5B900A10F75 /* IngredientModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientModel.swift; sourceTree = "<group>"; };
+		44BC53991A9DBC7E00221195 /* importIngredient.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = importIngredient.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		44BC539C1A9DBC7E00221195 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44BC539D1A9DBC7E00221195 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		44BC539F1A9DBC7E00221195 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		44BC53A81A9DC18A00221195 /* cookToDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cookToDo.entitlements; sourceTree = "<group>"; };
+		44BC53A91A9DC19800221195 /* importIngredient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = importIngredient.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +104,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		44BC53961A9DBC7E00221195 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -85,6 +122,7 @@
 				44899BD21A9CF49100A10F75 /* cookToDo-Bridging-Header.h */,
 				44899B9A1A9CEE8F00A10F75 /* cookToDo */,
 				44899BB01A9CEE9000A10F75 /* cookToDoTests */,
+				44BC539A1A9DBC7E00221195 /* importIngredient */,
 				44899B991A9CEE8F00A10F75 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,6 +132,7 @@
 			children = (
 				44899B981A9CEE8F00A10F75 /* cookToDo.app */,
 				44899BAD1A9CEE8F00A10F75 /* cookToDoTests.xctest */,
+				44BC53991A9DBC7E00221195 /* importIngredient.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +140,7 @@
 		44899B9A1A9CEE8F00A10F75 /* cookToDo */ = {
 			isa = PBXGroup;
 			children = (
+				44BC53A81A9DC18A00221195 /* cookToDo.entitlements */,
 				44899B9D1A9CEE8F00A10F75 /* AppDelegate.swift */,
 				44899B9F1A9CEE8F00A10F75 /* ViewController.swift */,
 				44899BA11A9CEE8F00A10F75 /* Main.storyboard */,
@@ -143,6 +183,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		44BC539A1A9DBC7E00221195 /* importIngredient */ = {
+			isa = PBXGroup;
+			children = (
+				44BC53A91A9DC19800221195 /* importIngredient.entitlements */,
+				44BC539D1A9DBC7E00221195 /* ShareViewController.swift */,
+				44BC539F1A9DBC7E00221195 /* MainInterface.storyboard */,
+				44BC539B1A9DBC7E00221195 /* Supporting Files */,
+			);
+			path = importIngredient;
+			sourceTree = "<group>";
+		};
+		44BC539B1A9DBC7E00221195 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				44BC539C1A9DBC7E00221195 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,10 +212,12 @@
 				44899B941A9CEE8F00A10F75 /* Sources */,
 				44899B951A9CEE8F00A10F75 /* Frameworks */,
 				44899B961A9CEE8F00A10F75 /* Resources */,
+				44BC53941A9DB4DE00221195 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				44BC53A21A9DBC7E00221195 /* PBXTargetDependency */,
 			);
 			name = cookToDo;
 			productName = cookToDo;
@@ -181,6 +242,23 @@
 			productReference = 44899BAD1A9CEE8F00A10F75 /* cookToDoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		44BC53981A9DBC7E00221195 /* importIngredient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44BC53A41A9DBC7E00221195 /* Build configuration list for PBXNativeTarget "importIngredient" */;
+			buildPhases = (
+				44BC53951A9DBC7E00221195 /* Sources */,
+				44BC53961A9DBC7E00221195 /* Frameworks */,
+				44BC53971A9DBC7E00221195 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = importIngredient;
+			productName = importIngredient;
+			productReference = 44BC53991A9DBC7E00221195 /* importIngredient.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -192,10 +270,31 @@
 				TargetAttributes = {
 					44899B971A9CEE8F00A10F75 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = ZZ47U4PG3J;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					44899BAC1A9CEE8F00A10F75 = {
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = 44899B971A9CEE8F00A10F75;
+					};
+					44BC53981A9DBC7E00221195 = {
+						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = ZZ47U4PG3J;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -214,6 +313,7 @@
 			targets = (
 				44899B971A9CEE8F00A10F75 /* cookToDo */,
 				44899BAC1A9CEE8F00A10F75 /* cookToDoTests */,
+				44BC53981A9DBC7E00221195 /* importIngredient */,
 			);
 		};
 /* End PBXProject section */
@@ -233,6 +333,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44BC53971A9DBC7E00221195 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44BC53A01A9DBC7E00221195 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +371,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		44BC53951A9DBC7E00221195 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44BC539E1A9DBC7E00221195 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -270,6 +386,11 @@
 			isa = PBXTargetDependency;
 			target = 44899B971A9CEE8F00A10F75 /* cookToDo */;
 			targetProxy = 44899BAE1A9CEE8F00A10F75 /* PBXContainerItemProxy */;
+		};
+		44BC53A21A9DBC7E00221195 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44BC53981A9DBC7E00221195 /* importIngredient */;
+			targetProxy = 44BC53A11A9DBC7E00221195 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -386,9 +507,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = cookToDo/cookToDo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = cookToDo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "cookToDo-Bridging-Header.h";
 			};
 			name = Debug;
@@ -397,9 +523,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = cookToDo/cookToDo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = cookToDo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "cookToDo-Bridging-Header.h";
 			};
 			name = Release;
@@ -438,6 +569,38 @@
 			};
 			name = Release;
 		};
+		44BC53A51A9DBC7E00221195 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = importIngredient/importIngredient.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = importIngredient/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		44BC53A61A9DBC7E00221195 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = importIngredient/importIngredient.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = importIngredient/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -467,6 +630,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		44BC53A41A9DBC7E00221195 /* Build configuration list for PBXNativeTarget "importIngredient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44BC53A51A9DBC7E00221195 /* Debug */,
+				44BC53A61A9DBC7E00221195 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

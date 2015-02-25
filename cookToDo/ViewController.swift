@@ -32,8 +32,25 @@ class ViewController: UIViewController {
             return
         }
         if countElements(self.urlTextField.text) > 0 {
-            self.ingredient.html = "<p>test</p>"
-            self.ingredient.title = "test"
+            var urlString = urlTextField.text
+            var url = NSURL(string: urlString)
+            var request = NSURLRequest(URL: url!)
+
+            var task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) in
+                var html = NSString(data: data!, encoding: NSUTF8StringEncoding)!
+                var error :NSError?
+                var htmlDocument = HTMLDocument(HTMLString: html, encoding: NSUTF8StringEncoding, error: &error)
+                var body = htmlDocument?.rootNode
+                var title = htmlDocument?.title
+                var ingredientsXPathQuery :String? = "//div[@id='ingredients_list']"
+                var ingredients = body?.nodeForXPath(ingredientsXPathQuery!)
+                var ingredientsHTML :String? = ingredients?.HTMLContent
+                var cssHTML :String? = "<style type='text/css'>div.ingredient_name{display:inline;}div.amount{display:inline;}div.ingredient_category{}</style>"
+                self.ingredient.html = cssHTML! + ingredientsHTML!
+                self.ingredient.title = title!
+                println(self.ingredient.html)
+            })
+            task.resume()
         }else{
             self.ingredient.html = "nil"
         }

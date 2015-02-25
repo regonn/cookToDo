@@ -69,7 +69,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="K0B-A4-KuR">
-                        <barButtonItem key="leftBarButtonItem" title="All clear" id="51Q-YG-Zgv"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="hkd-xj-eVo">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OtA-Lv-ArN">
+                                <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="All clear">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="b81-09-KS4">
                             <connections>
                                 <segue destination="eHE-1C-5rS" kind="show" id="LE6-CR-gmy"/>
@@ -77,7 +85,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="allClearButton" destination="51Q-YG-Zgv" id="J0X-3E-eCX"/>
+                        <outlet property="allClearButton" destination="OtA-Lv-ArN" id="Zbv-Ut-agk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9u-eC-Wzq" userLabel="First Responder" sceneMemberID="firstResponder"/>
