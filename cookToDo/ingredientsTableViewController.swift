@@ -12,6 +12,8 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
 
     var ingredients = NSMutableArray()
     var ingredientModel = IngredientModel()
+    var sharedDefaults = NSUserDefaults(suiteName: "group.jp.sonicgarden.cookToDo")
+    
 
 
     @IBOutlet weak var allClearButton: UIButton!
@@ -29,6 +31,9 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.sharedDefaults?.synchronize()
+        var objects: AnyObject? = sharedDefaults?.objectForKey("urls")
+        println(objects)
     }
 
     func deleteAll(sender:UIButton!) {

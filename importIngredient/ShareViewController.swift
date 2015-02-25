@@ -9,8 +9,9 @@
 import UIKit
 import Social
 
-class ShareViewController: SLComposeServiceViewController {
+class ShareViewController:SLComposeServiceViewController {
 
+    let shareDefaults = NSUserDefaults(suiteName: "group.jp.sonicgarden.cookToDo")
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
         return true
@@ -18,9 +19,8 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func didSelectPost() {
 
-        let shareDefaults = NSUserDefaults(suiteName: "group.jp.sonicgarden.cookToDo")
-        shareDefaults?.setObject(self.contentText, forKey: "stringKey")
-        shareDefaults?.synchronize()
+        
+        
         
         let inputItem = self.extensionContext!.inputItems.first as NSExtensionItem
         let itemProvider = inputItem.attachments![0] as NSItemProvider
@@ -29,10 +29,17 @@ class ShareViewController: SLComposeServiceViewController {
             itemProvider.loadItemForTypeIdentifier("public.url", options: nil, completionHandler: { (urlItem, error) in
 
                 let url = urlItem as NSURL;
+                var urlString = url.absoluteString
                 // 取得したURLを表示
                 NSLog("\(url.absoluteString)")
-
-                self.extensionContext!.completeRequestReturningItems([url], completionHandler: nil)
+                var objects = NSMutableArray()
+                objects.addObject(urlString!)
+                self.shareDefaults?.setObject(objects, forKey: "urls")
+                self.shareDefaults?.synchronize()
+                println(objects)
+                var fetch_objects: NSMutableArray? = self.shareDefaults?.objectForKey("urls") as? NSMutableArray
+                println(fetch_objects)
+            self.extensionContext!.completeRequestReturningItems([url], completionHandler: nil)
 
             })
         }
