@@ -22,6 +22,8 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+
         self.ingredients = ingredientModel.all()
         allClearButton.addTarget(self, action: "deleteAll:", forControlEvents:.TouchUpInside)
         //self.tableView.estimatedRowHeight = 90
@@ -32,7 +34,12 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.sharedDefaults?.synchronize()
-        var objects: AnyObject? = sharedDefaults?.objectForKey("urls")
+        var objects: NSArray = sharedDefaults?.objectForKey("urls") as NSArray
+        for object in objects {
+            if object as NSString != "https://www.yahoo.com/" {
+                self.addToModelFromUrl(object as NSString)
+            }
+        }
         println(objects)
     }
 
@@ -46,6 +53,30 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func addToModelFromUrl(url: NSString){
+        var url = NSURL(string: url)
+        var request = NSURLRequest(URL: url!)
+
+        var task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) in
+            var html = NSString(data: data!, encoding: NSUTF8StringEncoding)!
+            var error :NSError?
+            var htmlDocument = HTMLDocument(HTMLString: html, encoding: NSUTF8StringEncoding, error: &error)
+            var body = htmlDocument?.rootNode
+            var title = htmlDocument?.title
+            var ingredientsXPathQuery :String? = "//div[@id='ingredients_list']"
+            var ingredients = body?.nodeForXPath(ingredientsXPathQuery!)
+            var ingredientsHTML :String? = ingredients?.HTMLContent
+            var cssHTML :String? = "<style type='text/css'>div.ingredient_name{display:inline;}div.amount{display:inline;}div.ingredient_category{}</style>"
+            var ingredient = Ingredient()
+            ingredient.html = cssHTML! + ingredientsHTML!
+            ingredient.title = title!
+            ingredient.id = self.ingredientModel.add(ingredient.html, title: ingredient.title)
+            self.ingredients.addObject(ingredient)
+            self.tableView.reloadData()
+        })
+        task.resume()
     }
 
     // MARK: - Table view data source
@@ -65,8 +96,9 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
-
-        var webView = UIWebView()
+        var frame = cell.contentView.bounds
+        frame = CGRectInset(frame, 10, 10)
+        var webView = UIWebView(frame: frame)
 
         var ingredient = self.ingredients.objectAtIndex(indexPath.row) as Ingredient
         var html = ingredient.html as String

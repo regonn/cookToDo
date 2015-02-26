@@ -12,8 +12,6 @@ import Foundation
 class IngredientModel {
     var tableName = "ingredients"
     
-    let dateFormatter = NSDateFormatter()
-    
     init() {
         let (tb, err) = SD.existingTables()
         if !contains(tb, tableName) {
@@ -30,6 +28,8 @@ class IngredientModel {
     func add(html: String, title: String) -> Int{
         var result: Int? = nil
         println("Add ingredient")
+        println(html)
+        println(title)
         if let err = SD.executeChange("INSERT INTO ? (Html, Title) VALUES(?, ?)", withArgs: [ tableName, html, title]){
             println(err)
         } else {
@@ -40,6 +40,7 @@ class IngredientModel {
                 result = Int(id)
             }
         }
+        println(result!)
         return result!
     }
     
