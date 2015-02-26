@@ -12,7 +12,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
 
     var ingredients = NSMutableArray()
     var ingredientModel = IngredientModel()
-    var sharedDefaults = NSUserDefaults(suiteName: "group.jp.sonicgarden.cookToDo")
+    var shareDefaults = NSUserDefaults(suiteName: "group.jp.sonicgarden.cookToDo")
     
 
 
@@ -33,14 +33,20 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.sharedDefaults?.synchronize()
-        var objects: NSArray = sharedDefaults?.objectForKey("urls") as NSArray
-        for object in objects {
-            if object as NSString != "https://www.yahoo.com/" {
-                self.addToModelFromUrl(object as NSString)
+        self.shareDefaults?.synchronize()
+        var push_objects = NSMutableArray()
+        if var objects: NSMutableArray = shareDefaults?.objectForKey("urls") as? NSMutableArray {
+            for object in objects {
+                if object as NSString != "https://www.yahoo.com/" {
+                    if self.addToModelFromUrl(object as NSString) {
+                    }else{
+                        push_objects.addObject(object)
+                    }
+                }
             }
         }
-        println(objects)
+        self.shareDefaults?.setObject(push_objects, forKey: "urls")
+        self.shareDefaults?.synchronize()
     }
 
     func deleteAll(sender:UIButton!) {
@@ -55,7 +61,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
         // Dispose of any resources that can be recreated.
     }
 
-    func addToModelFromUrl(url: NSString){
+    func addToModelFromUrl(url: NSString)-> BooleanType{
         var url = NSURL(string: url)
         var request = NSURLRequest(URL: url!)
 
@@ -69,14 +75,16 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
             var ingredients = body?.nodeForXPath(ingredientsXPathQuery!)
             var ingredientsHTML :String? = ingredients?.HTMLContent
             var cssHTML :String? = "<style type='text/css'>div.ingredient_name{display:inline;}div.amount{display:inline;}div.ingredient_category{}</style>"
+            var titleHTML :String? = "<h1>" + title! + "</h1>"
             var ingredient = Ingredient()
-            ingredient.html = cssHTML! + ingredientsHTML!
+            ingredient.html = cssHTML! + titleHTML! + ingredientsHTML!
             ingredient.title = title!
             ingredient.id = self.ingredientModel.add(ingredient.html, title: ingredient.title)
             self.ingredients.addObject(ingredient)
             self.tableView.reloadData()
         })
         task.resume()
+        return true
     }
 
     // MARK: - Table view data source

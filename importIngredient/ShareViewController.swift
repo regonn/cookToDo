@@ -32,12 +32,11 @@ class ShareViewController:SLComposeServiceViewController {
                 var urlString = url.absoluteString
                 // 取得したURLを表示
                 NSLog("\(url.absoluteString)")
-                var objects = NSMutableArray()
-                objects.addObject(urlString!)
-                self.shareDefaults?.setObject(objects, forKey: "urls")
-                self.shareDefaults?.synchronize()
-                println(objects)
                 var fetch_objects: NSMutableArray? = self.shareDefaults?.objectForKey("urls") as? NSMutableArray
+                fetch_objects!.addObject(urlString!)
+                self.shareDefaults?.setObject(fetch_objects, forKey: "urls")
+                self.shareDefaults?.synchronize()
+                
                 println(fetch_objects)
             self.extensionContext!.completeRequestReturningItems([url], completionHandler: nil)
 
