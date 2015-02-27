@@ -70,7 +70,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
             var htmlDocument = HTMLDocument(HTMLString: html, encoding: NSUTF8StringEncoding, error: &error)
             var body = htmlDocument?.rootNode
             var title = htmlDocument?.title
-            var titleHTML :String? = "<strong>" + title! + "</strong>"
+            var titleHTML :String? = "<h5>" + title! + "<h5>"
 
             var ingredientsXPathQuery :String? = "//div[@id='ingredients_list']"
             var servingsXPathQuery :String? = "//span[@class='servings_for yield']"
@@ -81,7 +81,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
                 titleHTML = titleHTML! + servingsHTML!
             }
             var ingredientsHTML :String? = ingredients?.HTMLContent
-            var cssHTML :String? = "<style type='text/css'>div.ingredient_name{display:inline;}div.amount{display:inline;}div.ingredient_category{color:red}body{background-color:#F7F3E8}</style>"
+            var cssHTML :String? = "<style type='text/css'>div.ingredient_name{display:inline;font-weight:700}div.amount{display:inline;}div.ingredient_category{color:red}body{background-color:#F7F3E8}</style>"
 
             var ingredient = Ingredient()
             ingredient.html = cssHTML! + titleHTML! + ingredientsHTML!

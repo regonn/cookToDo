@@ -9,18 +9,36 @@
 import UIKit
 import Social
 
-class ShareViewController:SLComposeServiceViewController {
+class ShareViewController: UIViewController {
 
     let shareDefaults = NSUserDefaults(suiteName: "group.jp.sonicgarden.cookToDo")
-    override func isContentValid() -> Bool {
-        // Do validation of contentText and/or NSExtensionContext attachments here
-        return true
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let inputItem = self.extensionContext!.inputItems.first as NSExtensionItem
+        let itemProvider = inputItem.attachments![0] as NSItemProvider
+
+        if (itemProvider.hasItemConformingToTypeIdentifier("public.url")) {
+            itemProvider.loadItemForTypeIdentifier("public.url", options: nil, completionHandler: { (urlItem, error) in
+
+                let url = urlItem as NSURL;
+                var urlString = url.absoluteString
+                // 取得したURLを表示
+                NSLog("\(url.absoluteString)")
+                var fetch_objects: NSMutableArray? = self.shareDefaults?.objectForKey("urls") as? NSMutableArray
+                fetch_objects!.addObject(urlString!)
+                self.shareDefaults?.setObject(fetch_objects, forKey: "urls")
+
+                self.shareDefaults?.synchronize()
+                self.showCopyAlert()
+            })
+        }
+        // Do any additional setup after loading the view, typically from a nib.
+
     }
 
-    override func presentationAnimationDidFinish() {
-        self.showCopyAlert()
-    }
 
+    /*
     override func didSelectPost() {
 
         let inputItem = self.extensionContext!.inputItems.first as NSExtensionItem
@@ -45,21 +63,21 @@ class ShareViewController:SLComposeServiceViewController {
             })
         }
     }
+    */
 
     func showCopyAlert(){
-        let alertController = UIAlertController(title: "", message: "Registered!", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "", message: "登録できました", preferredStyle: UIAlertControllerStyle.Alert)
 
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertController.addAction(defaultAction)
+        let defaultAction = UIAlertAction(title: "OK",
+            style: .Default,
+            handler:{
+            (action:UIAlertAction!) -> Void in
+                self.extensionContext!.completeRequestReturningItems(nil, completionHandler: nil)
+        })
 
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
+        alert.addAction(defaultAction)
 
-
-
-    override func configurationItems() -> [AnyObject]! {
-        // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
-        return NSArray()
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 
 }
