@@ -17,11 +17,12 @@ class ShareViewController:SLComposeServiceViewController {
         return true
     }
 
+    override func presentationAnimationDidFinish() {
+        self.showCopyAlert()
+    }
+
     override func didSelectPost() {
 
-        
-        
-        
         let inputItem = self.extensionContext!.inputItems.first as NSExtensionItem
         let itemProvider = inputItem.attachments![0] as NSItemProvider
 

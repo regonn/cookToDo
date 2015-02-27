@@ -21,6 +21,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.rowHeight = 300
 
         self.ingredients = ingredientModel.all()
         allClearButton.addTarget(self, action: "deleteAll:", forControlEvents:.TouchUpInside)
@@ -69,11 +70,19 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
             var htmlDocument = HTMLDocument(HTMLString: html, encoding: NSUTF8StringEncoding, error: &error)
             var body = htmlDocument?.rootNode
             var title = htmlDocument?.title
+            var titleHTML :String? = "<strong>" + title! + "</strong>"
+
             var ingredientsXPathQuery :String? = "//div[@id='ingredients_list']"
+            var servingsXPathQuery :String? = "//span[@class='servings_for yield']"
             var ingredients = body?.nodeForXPath(ingredientsXPathQuery!)
+            var servings = body?.nodeForXPath(servingsXPathQuery!)
+            if servings != nil {
+                var servingsHTML :String? = servings?.HTMLContent
+                titleHTML = titleHTML! + servingsHTML!
+            }
             var ingredientsHTML :String? = ingredients?.HTMLContent
-            var cssHTML :String? = "<style type='text/css'>div.ingredient_name{display:inline;}div.amount{display:inline;}div.ingredient_category{}</style>"
-            var titleHTML :String? = "<h3>" + title! + "</h3>"
+            var cssHTML :String? = "<style type='text/css'>div.ingredient_name{display:inline;}div.amount{display:inline;}div.ingredient_category{color:red}body{background-color:#F7F3E8}</style>"
+
             var ingredient = Ingredient()
             ingredient.html = cssHTML! + titleHTML! + ingredientsHTML!
             ingredient.title = title!
@@ -101,18 +110,19 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
-        var frame = cell.contentView.bounds
-        frame = CGRectInset(frame, 10, 10)
-        var webView = UIWebView(frame: frame)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell
+        //var frame = cell.contentView.bounds
+        //frame = CGRectInset(frame, 10, 10)
+        //var webView = UIWebView(frame: frame)
+        var webView = cell.webView
 
         var ingredient = self.ingredients.objectAtIndex(indexPath.row) as Ingredient
         var html = ingredient.html as String
 
         webView.loadHTMLString(html, baseURL: nil)
         webView.delegate = self
-        cell.contentView.addSubview(webView)
-        cell.textLabel!.text = String(ingredient.id)
+        //cell.contentView.addSubview(webView)
+        cell.idLabel.text = String(ingredient.id)
 
         return cell
     }
@@ -180,12 +190,13 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
     }
 
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
         var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler: {
             (action: UITableViewRowAction!, indexPath: NSIndexPath!) in
             println("Triggered delete action \(action) atIndexPath: \(indexPath)")
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            self.ingredientModel.delete(cell!.textLabel!.text!)
+            self.ingredientModel.delete(cell.idLabel.text!)
+            self.ingredients = self.ingredientModel.all()
             self.tableView.reloadData()
             return
         })

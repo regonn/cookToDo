@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YXv-Hp-1iO">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -56,11 +57,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="100" id="1jG-K8-TlR">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="100" id="1jG-K8-TlR" customClass="CustomTableViewCell" customModule="cookToDo" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1jG-K8-TlR" id="RLR-LW-a6K">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuv-H2-xzs">
+                                            <rect key="frame" x="26" y="0.0" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jlI-uq-tMe">
+                                            <rect key="frame" x="8" y="-101" width="84" height="300.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="300" id="dHV-6x-xqx"/>
+                                            </constraints>
+                                        </webView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="jlI-uq-tMe" firstAttribute="leading" secondItem="RLR-LW-a6K" secondAttribute="leadingMargin" id="A0N-Aq-9BZ"/>
+                                        <constraint firstAttribute="centerY" secondItem="jlI-uq-tMe" secondAttribute="centerY" id="eTk-rB-798"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="jlI-uq-tMe" secondAttribute="trailing" constant="50" id="s6H-5j-Zve"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="idLabel" destination="vuv-H2-xzs" id="Xe5-96-zch"/>
+                                    <outlet property="webView" destination="jlI-uq-tMe" id="IyX-gu-QMF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
