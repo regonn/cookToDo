@@ -38,11 +38,23 @@ class ShareViewController:SLComposeServiceViewController {
                 self.shareDefaults?.synchronize()
                 
                 println(fetch_objects)
+                self.showCopyAlert()
             self.extensionContext!.completeRequestReturningItems([url], completionHandler: nil)
 
             })
         }
     }
+
+    func showCopyAlert(){
+        let alertController = UIAlertController(title: "", message: "Registered!", preferredStyle: .Alert)
+
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
+
 
     override func configurationItems() -> [AnyObject]! {
         // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.

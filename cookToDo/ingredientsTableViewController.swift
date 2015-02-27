@@ -22,8 +22,6 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-
         self.ingredients = ingredientModel.all()
         allClearButton.addTarget(self, action: "deleteAll:", forControlEvents:.TouchUpInside)
         //self.tableView.estimatedRowHeight = 90
@@ -75,7 +73,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
             var ingredients = body?.nodeForXPath(ingredientsXPathQuery!)
             var ingredientsHTML :String? = ingredients?.HTMLContent
             var cssHTML :String? = "<style type='text/css'>div.ingredient_name{display:inline;}div.amount{display:inline;}div.ingredient_category{}</style>"
-            var titleHTML :String? = "<h1>" + title! + "</h1>"
+            var titleHTML :String? = "<h3>" + title! + "</h3>"
             var ingredient = Ingredient()
             ingredient.html = cssHTML! + titleHTML! + ingredientsHTML!
             ingredient.title = title!
@@ -114,7 +112,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
         webView.loadHTMLString(html, baseURL: nil)
         webView.delegate = self
         cell.contentView.addSubview(webView)
-        //cell.textLabel!.text = ingredient.title as String
+        cell.textLabel!.text = String(ingredient.id)
 
         return cell
     }
@@ -175,6 +173,23 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
             self.tableView.reloadData()
         }
 
+    }
+
+    // 空だけど editActionsForRowAtIndexPathの起動に必要
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    }
+
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler: {
+            (action: UITableViewRowAction!, indexPath: NSIndexPath!) in
+            println("Triggered delete action \(action) atIndexPath: \(indexPath)")
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.ingredientModel.delete(cell!.textLabel!.text!)
+            self.tableView.reloadData()
+            return
+        })
+        return [deleteAction]
     }
 
 }
