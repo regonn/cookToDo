@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  {
+class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, UITableViewDataSource  {
 
     var ingredients = NSMutableArray()
     var ingredientModel = IngredientModel()
     var shareDefaults = NSUserDefaults(suiteName: "group.jp.sonicgarden.cookToDo")
+    var push_objects = NSMutableArray()
     
 
 
@@ -33,19 +34,16 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.shareDefaults?.synchronize()
-        var push_objects = NSMutableArray()
-        if var objects: NSMutableArray = shareDefaults?.objectForKey("urls") as? NSMutableArray {
+        if var objects: NSArray = shareDefaults?.objectForKey("urls") as? NSArray {
             for object in objects {
-                if object as NSString != "https://www.yahoo.com/" {
-                    if self.addToModelFromUrl(object as NSString) {
-                    }else{
-                        push_objects.addObject(object)
-                    }
-                }
+                println(object)
+                self.addToModelFromUrl(object as NSString)
             }
         }
-        self.shareDefaults?.setObject(push_objects, forKey: "urls")
+        self.shareDefaults?.setObject(self.push_objects, forKey: "urls")
+        println("\(self.push_objects)")
         self.shareDefaults?.synchronize()
+        self.push_objects = NSMutableArray()
     }
 
     func deleteAll(sender:UIButton!) {
@@ -60,38 +58,56 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
         // Dispose of any resources that can be recreated.
     }
 
-    func addToModelFromUrl(url: NSString)-> BooleanType{
-        var url = NSURL(string: url)
+    func addToModelFromUrl(urlString: NSString){
+        var url = NSURL(string: urlString)
         var request = NSURLRequest(URL: url!)
 
         var task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) in
+            println("fetch start:\(url)")
             var html = NSString(data: data!, encoding: NSUTF8StringEncoding)!
             var error :NSError?
             var htmlDocument = HTMLDocument(HTMLString: html, encoding: NSUTF8StringEncoding, error: &error)
-            var body = htmlDocument?.rootNode
-            var title = htmlDocument?.title
-            var titleHTML :String? = "<h5>" + title! + "<h5>"
+            println(htmlDocument)
+            if htmlDocument != nil {
+                var body = htmlDocument?.body
+                println(body)
+                var title = htmlDocument?.title
+                println(title)
+                if body != nil && title != nil {
+                    var titleHTML :String? = "<h4>" + title! + "<h4>"
+                    println("title:\(title)")
 
-            var ingredientsXPathQuery :String? = "//div[@id='ingredients_list']"
-            var servingsXPathQuery :String? = "//span[@class='servings_for yield']"
-            var ingredients = body?.nodeForXPath(ingredientsXPathQuery!)
-            var servings = body?.nodeForXPath(servingsXPathQuery!)
-            if servings != nil {
-                var servingsHTML :String? = servings?.HTMLContent
-                titleHTML = titleHTML! + servingsHTML!
+                    var ingredientsXPathQuery :String? = "//div[@id='ingredients_list']"
+                    var servingsXPathQuery :String? = "//span[@class='servings_for yield']"
+                    var ingredients = body?.nodeForXPath(ingredientsXPathQuery!)
+
+                    println("get ingredients")
+                    var servings = body?.nodeForXPath(servingsXPathQuery!)
+                    if servings != nil {
+                        println("get servings")
+                        var servingsHTML :String? = servings?.HTMLContent
+                        titleHTML = titleHTML! + servingsHTML!
+                    }
+                    var ingredientsHTML :String? = ingredients?.HTMLContent
+                    var cssHTML :String? = "<style type='text/css'>div.ingredient_name{display:inline;font-weight:500}div.amount{display:inline;}div.ingredient_category{color:red}body{background-color:#F7F3E8}</style>"
+
+                    var ingredient = Ingredient()
+                    ingredient.html = cssHTML! + titleHTML! + ingredientsHTML!
+                    ingredient.title = title!
+                    ingredient.id = self.ingredientModel.add(ingredient.html, title: ingredient.title)
+                    self.ingredients.addObject(ingredient)
+                    self.tableView.reloadData()
+                }else{
+                    println("failed access")
+                    self.addPushObjects(urlString)
+                }
             }
-            var ingredientsHTML :String? = ingredients?.HTMLContent
-            var cssHTML :String? = "<style type='text/css'>div.ingredient_name{display:inline;font-weight:700}div.amount{display:inline;}div.ingredient_category{color:red}body{background-color:#F7F3E8}</style>"
-
-            var ingredient = Ingredient()
-            ingredient.html = cssHTML! + titleHTML! + ingredientsHTML!
-            ingredient.title = title!
-            ingredient.id = self.ingredientModel.add(ingredient.html, title: ingredient.title)
-            self.ingredients.addObject(ingredient)
-            self.tableView.reloadData()
         })
         task.resume()
-        return true
+    }
+
+    func addPushObjects(url: String){
+        self.push_objects.addObject(url)
     }
 
     // MARK: - Table view data source
@@ -105,6 +121,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
+        self.ingredients = ingredientModel.all()
         return self.ingredients.count
     }
 
@@ -114,6 +131,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
         //var frame = cell.contentView.bounds
         //frame = CGRectInset(frame, 10, 10)
         //var webView = UIWebView(frame: frame)
+        self.ingredients = ingredientModel.all()
         var webView = cell.webView
 
         var ingredient = self.ingredients.objectAtIndex(indexPath.row) as Ingredient
@@ -194,10 +212,8 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate  
         var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler: {
             (action: UITableViewRowAction!, indexPath: NSIndexPath!) in
             println("Triggered delete action \(action) atIndexPath: \(indexPath)")
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             self.ingredientModel.delete(cell.idLabel.text!)
-            self.ingredients = self.ingredientModel.all()
-            self.tableView.reloadData()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             return
         })
         return [deleteAction]

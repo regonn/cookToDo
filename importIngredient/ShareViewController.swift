@@ -24,11 +24,20 @@ class ShareViewController: UIViewController {
                 let url = urlItem as NSURL;
                 var urlString = url.absoluteString
                 // 取得したURLを表示
-                NSLog("\(url.absoluteString)")
-                var fetch_objects: NSMutableArray? = self.shareDefaults?.objectForKey("urls") as? NSMutableArray
-                fetch_objects!.addObject(urlString!)
-                self.shareDefaults?.setObject(fetch_objects, forKey: "urls")
+                var objects = NSMutableArray()
 
+                NSLog("\(url.absoluteString)")
+                var fetch_objects: NSArray = self.shareDefaults?.objectForKey("urls") as NSArray
+                println(fetch_objects)
+                for item in fetch_objects {
+                    objects.addObject(item)
+                }
+                //fetch_objects.addObject(urlString!)
+                println("OK")
+                //self.shareDefaults?.setObject(fetch_objects, forKey: "urls")
+                objects.addObject(urlString!)
+                self.shareDefaults?.setObject(objects, forKey: "urls")
+                println("OK?")
                 self.shareDefaults?.synchronize()
                 self.showCopyAlert()
             })

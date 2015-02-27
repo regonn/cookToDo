@@ -48,6 +48,7 @@ class IngredientModel {
     func delete(id: String){
         if let err = SD.executeChange("DELETE FROM ? WHERE ID = ?", withArgs: [tableName, id]){
         }else{
+            println(id + " was deleted.")
         }
     }
     
