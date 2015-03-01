@@ -16,7 +16,7 @@ class IngredientModel {
         let (tb, err) = SD.existingTables()
         if !contains(tb, tableName) {
             if let err =
-                SD.createTable(tableName, withColumnNamesAndTypes: [ "Html": .StringVal, "Title": .StringVal ]){
+                SD.createTable(tableName, withColumnNamesAndTypes: [ "Html": .StringVal ]){
                     
             } else {
                 
@@ -25,12 +25,11 @@ class IngredientModel {
         println(SD.databasePath())
     }
     
-    func add(html: String, title: String) -> Int{
+    func add(html: String) -> Int{
         var result: Int? = nil
         println("Add ingredient")
         println(html)
-        println(title)
-        if let err = SD.executeChange("INSERT INTO ? (Html, Title) VALUES(?, ?)", withArgs: [ tableName, html, title]){
+        if let err = SD.executeChange("INSERT INTO ? (Html) VALUES(?)", withArgs: [ tableName, html ]){
             println(err)
         } else {
             let (id, err) = SD.lastInsertedRowID()
@@ -63,9 +62,7 @@ class IngredientModel {
                 if let id = row["ID"]?.asInt() {
                     var ingredient = Ingredient()
                     var html = row["Html"]?.asString()
-                    var title = row["Title"]?.asString()
                     ingredient.html = html!
-                    ingredient.title = title!
                     ingredient.id = id
                     ingredients.addObject(ingredient)
                 }

@@ -69,17 +69,19 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jlI-uq-tMe">
-                                            <rect key="frame" x="8" y="-101" width="84" height="300.5"/>
+                                            <rect key="frame" x="8" y="-101" width="84" height="301"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="300" id="dHV-6x-xqx"/>
+                                                <constraint firstAttribute="height" constant="260" id="dHV-6x-xqx"/>
                                             </constraints>
                                         </webView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="jlI-uq-tMe" firstAttribute="leading" secondItem="RLR-LW-a6K" secondAttribute="leadingMargin" id="A0N-Aq-9BZ"/>
+                                        <constraint firstItem="jlI-uq-tMe" firstAttribute="top" secondItem="RLR-LW-a6K" secondAttribute="topMargin" constant="10" id="c5d-Hs-vAG"/>
                                         <constraint firstAttribute="centerY" secondItem="jlI-uq-tMe" secondAttribute="centerY" id="eTk-rB-798"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="jlI-uq-tMe" secondAttribute="trailing" constant="50" id="s6H-5j-Zve"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="jlI-uq-tMe" secondAttribute="trailing" constant="5" id="s6H-5j-Zve"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jlI-uq-tMe" secondAttribute="bottom" constant="10" id="uTP-DH-gl2"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -94,7 +96,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="K0B-A4-KuR">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="hkd-xj-eVo">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="hkd-xj-eVo">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OtA-Lv-ArN">
                                 <rect key="frame" x="-23" y="-15" width="133" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -103,9 +105,19 @@
                                 </state>
                             </button>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="6NL-gy-gjY">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ekj-4U-f0f">
+                                <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="同期">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="allClearButton" destination="OtA-Lv-ArN" id="Zbv-Ut-agk"/>
+                        <outlet property="syncButton" destination="ekj-4U-f0f" id="SSa-D2-S6X"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9u-eC-Wzq" userLabel="First Responder" sceneMemberID="firstResponder"/>

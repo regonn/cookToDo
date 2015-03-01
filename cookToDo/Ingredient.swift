@@ -9,7 +9,6 @@
 import UIKit
 
 class Ingredient: NSObject {
-    var title = String()
     var html = String()
     var id = NSInteger()
 }

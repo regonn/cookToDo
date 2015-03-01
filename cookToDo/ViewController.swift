@@ -47,7 +47,6 @@ class ViewController: UIViewController {
                 var ingredientsHTML :String? = ingredients?.HTMLContent
                 var cssHTML :String? = "<style type='text/css'>div.ingredient_name{display:inline;}div.amount{display:inline;}div.ingredient_category{}</style>"
                 self.ingredient.html = cssHTML! + ingredientsHTML!
-                self.ingredient.title = title!
                 println(self.ingredient.html)
             })
             task.resume()

@@ -27,9 +27,12 @@ class ShareViewController: UIViewController {
                 var objects = NSMutableArray()
 
                 NSLog("\(url.absoluteString)")
-                var fetch_objects: NSArray = self.shareDefaults?.objectForKey("urls") as NSArray
+                var fetch_objects: NSArray? = self.shareDefaults?.objectForKey("urls") as? NSArray
                 println(fetch_objects)
-                for item in fetch_objects {
+                if fetch_objects == nil {
+                    fetch_objects = NSMutableArray()
+                }
+                for item in fetch_objects! {
                     objects.addObject(item)
                 }
                 //fetch_objects.addObject(urlString!)

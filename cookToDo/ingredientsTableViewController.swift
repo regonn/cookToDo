@@ -18,21 +18,34 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
 
 
     @IBOutlet weak var allClearButton: UIButton!
+    
+    
+    @IBOutlet weak var syncButton: UIButton!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.rowHeight = 300
+        self.tableView.rowHeight = 280
 
         self.ingredients = ingredientModel.all()
         allClearButton.addTarget(self, action: "deleteAll:", forControlEvents:.TouchUpInside)
-        //self.tableView.estimatedRowHeight = 90
-        //self.tableView.rowHeight = UITableViewAutomaticDimension
+        syncButton.addTarget(self, action: "syncData:", forControlEvents:.TouchUpInside)
+   
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.syncData(nil)
+    }
+
+    func deleteAll(sender:UIButton!) {
+        ingredientModel.deleteAll()
+        self.ingredients = ingredientModel.all()
+        self.tableView.reloadData()
+    }
+    
+    func syncData(sender:UIButton!) {
         self.shareDefaults?.synchronize()
         if var objects: NSArray = shareDefaults?.objectForKey("urls") as? NSArray {
             for object in objects {
@@ -44,13 +57,6 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
         println("\(self.push_objects)")
         self.shareDefaults?.synchronize()
         self.push_objects = NSMutableArray()
-    }
-
-    func deleteAll(sender:UIButton!) {
-        ingredientModel.deleteAll()
-        self.ingredients = ingredientModel.all()
-        self.tableView.reloadData()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,34 +73,36 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
             var html = NSString(data: data!, encoding: NSUTF8StringEncoding)!
             var error :NSError?
             var htmlDocument = HTMLDocument(HTMLString: html, encoding: NSUTF8StringEncoding, error: &error)
-            println(htmlDocument)
             if htmlDocument != nil {
-                var body = htmlDocument?.body
-                println(body)
-                var title = htmlDocument?.title
-                println(title)
-                if body != nil && title != nil {
-                    var titleHTML :String? = "<h4>" + title! + "<h4>"
-                    println("title:\(title)")
+                var body = htmlDocument?.rootNode
+                if body != nil {
+                    
+                    var title = htmlDocument?.title
+                    if title == nil {
+                        title = "Unknown title"
+                    }
+                    var titleHTML = "<h4>" + title! + "</h4>"
+                    println("HTML:\(titleHTML)")
+                    
+                    var ingredients = body?.nodeForXPath("//div[@id='ingredients_list']")
+                    if ingredients == nil {
+                        self.addPushObjects(urlString)
+                        return
+                    }
+                    var ingredientsHTML :String? = ingredients?.HTMLContent
 
-                    var ingredientsXPathQuery :String? = "//div[@id='ingredients_list']"
-                    var servingsXPathQuery :String? = "//span[@class='servings_for yield']"
-                    var ingredients = body?.nodeForXPath(ingredientsXPathQuery!)
-
-                    println("get ingredients")
-                    var servings = body?.nodeForXPath(servingsXPathQuery!)
+                    var servings = body?.nodeForXPath("//span[@class='servings_for yield']")
                     if servings != nil {
                         println("get servings")
                         var servingsHTML :String? = servings?.HTMLContent
-                        titleHTML = titleHTML! + servingsHTML!
+                        titleHTML = titleHTML + servingsHTML!
                     }
-                    var ingredientsHTML :String? = ingredients?.HTMLContent
+                    
                     var cssHTML :String? = "<style type='text/css'>div.ingredient_name{display:inline;font-weight:500}div.amount{display:inline;}div.ingredient_category{color:red}body{background-color:#F7F3E8}</style>"
 
                     var ingredient = Ingredient()
-                    ingredient.html = cssHTML! + titleHTML! + ingredientsHTML!
-                    ingredient.title = title!
-                    ingredient.id = self.ingredientModel.add(ingredient.html, title: ingredient.title)
+                    ingredient.html = cssHTML! + titleHTML + ingredientsHTML!
+                    ingredient.id = self.ingredientModel.add(ingredient.html)
                     self.ingredients.addObject(ingredient)
                     self.tableView.reloadData()
                 }else{
@@ -194,9 +202,8 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
         var ingredient: Ingredient? = source.ingredient
         var html = ingredient?.html
         println(ingredient?.html)
-        println(ingredient?.title)
         if html != "nil" {
-            ingredient!.id = ingredientModel.add(ingredient!.html, title: ingredient!.title)
+            ingredient!.id = ingredientModel.add(ingredient!.html)
             self.ingredients.addObject(ingredient!)
             self.tableView.reloadData()
         }
