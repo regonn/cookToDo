@@ -36,11 +36,9 @@ class ShareViewController: UIViewController {
                     objects.addObject(item)
                 }
                 //fetch_objects.addObject(urlString!)
-                println("OK")
                 //self.shareDefaults?.setObject(fetch_objects, forKey: "urls")
                 objects.addObject(urlString!)
                 self.shareDefaults?.setObject(objects, forKey: "urls")
-                println("OK?")
                 self.shareDefaults?.synchronize()
                 self.showCopyAlert()
             })

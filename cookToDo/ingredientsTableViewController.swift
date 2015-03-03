@@ -24,12 +24,19 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
 
 
     override func viewDidLoad() {
+
         super.viewDidLoad()
         self.tableView.rowHeight = 280
 
         self.ingredients = ingredientModel.all()
-        allClearButton.addTarget(self, action: "deleteAll:", forControlEvents:.TouchUpInside)
+        allClearButton.addTarget(self, action: "showConfirmAlert:", forControlEvents:.TouchUpInside)
         syncButton.addTarget(self, action: "syncData:", forControlEvents:.TouchUpInside)
+
+        var refreshCtl = UIRefreshControl()
+
+        refreshCtl.addTarget(self, action: "syncData:", forControlEvents: UIControlEvents.ValueChanged)
+
+        self.refreshControl = refreshCtl
    
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -39,13 +46,14 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
         self.syncData(nil)
     }
 
-    func deleteAll(sender:UIButton!) {
+    func deleteAll() {
         ingredientModel.deleteAll()
         self.ingredients = ingredientModel.all()
         self.tableView.reloadData()
     }
     
     func syncData(sender:UIButton!) {
+        println("sync")
         self.shareDefaults?.synchronize()
         if var objects: NSArray = shareDefaults?.objectForKey("urls") as? NSArray {
             for object in objects {
@@ -57,6 +65,9 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
         println("\(self.push_objects)")
         self.shareDefaults?.synchronize()
         self.push_objects = NSMutableArray()
+        self.ingredients = ingredientModel.all()
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,7 +92,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
                     if title == nil {
                         title = "Unknown title"
                     }
-                    var titleHTML = "<h4>" + title! + "</h4>"
+                    var titleHTML = "<a href='\(urlString)'><h4>\(title!)</h4></a>"
                     println("HTML:\(titleHTML)")
                     
                     var ingredients = body?.nodeForXPath("//div[@id='ingredients_list']")
@@ -224,6 +235,35 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
             return
         })
         return [deleteAction]
+    }
+
+    func webView(webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebViewNavigationType) -> Bool {
+        UIApplication.sharedApplication().openURL(request.URL)
+        println("link click")
+        return true
+    }
+
+    func showConfirmAlert(sender:UIButton!){
+        let alert = UIAlertController(title: "", message: "データを全て削除します。よろしいですか？", preferredStyle: UIAlertControllerStyle.Alert)
+
+        let defaultAction = UIAlertAction(title: "OK",
+            style: .Default,
+            handler:{
+                (action:UIAlertAction!) -> Void in
+                self.deleteAll()
+        })
+
+        let cancelAction:UIAlertAction = UIAlertAction(title: "Cancel",
+            style: UIAlertActionStyle.Cancel,
+            handler:{
+                (action:UIAlertAction!) -> Void in
+                println("Cancel")
+        })
+
+        alert.addAction(defaultAction)
+        alert.addAction(cancelAction)
+
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 
 }

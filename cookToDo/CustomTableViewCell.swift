@@ -13,6 +13,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var idLabel: UILabel!
     
     @IBOutlet weak var webView: UIWebView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +24,4 @@ class CustomTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
