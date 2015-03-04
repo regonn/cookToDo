@@ -11,4 +11,5 @@ import UIKit
 class Ingredient: NSObject {
     var html = String()
     var id = NSInteger()
+    var cellHeight = Int()
 }

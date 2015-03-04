@@ -14,13 +14,12 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
     var ingredientModel = IngredientModel()
     var shareDefaults = NSUserDefaults(suiteName: "group.jp.sonicgarden.cookToDo")
     var push_objects = NSMutableArray()
+    var maxCellHeight = Int()
     
     @IBOutlet weak var allClearButton: UIButton!
 
     override func viewDidLoad() {
-
         super.viewDidLoad()
-        self.tableView.rowHeight = 280
 
         self.ingredients = ingredientModel.all()
         allClearButton.addTarget(self, action: "showConfirmAlert:", forControlEvents:.TouchUpInside)
@@ -140,9 +139,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell
-        //var frame = cell.contentView.bounds
-        //frame = CGRectInset(frame, 10, 10)
-        //var webView = UIWebView(frame: frame)
+
         self.ingredients = ingredientModel.all()
         var webView = cell.webView
 
@@ -151,7 +148,14 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
 
         webView.loadHTMLString(html, baseURL: nil)
         webView.delegate = self
-        //cell.contentView.addSubview(webView)
+        webView.scrollView.scrollEnabled = false
+
+        if ingredient.cellHeight == 0 {
+            ingredient.cellHeight = ingredientModel.updateCellHeight(ingredient.id, cellHeight: Int(webView.scrollView.contentSize.height + 50))
+        }
+
+        self.tableView.rowHeight = CGFloat(ingredient.cellHeight)
+
         cell.idLabel.text = String(ingredient.id)
 
         return cell
@@ -231,8 +235,10 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
     }
 
     func webView(webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebViewNavigationType) -> Bool {
-        UIApplication.sharedApplication().openURL(request.URL)
-        println("link click")
+        if request.URL.absoluteString!.rangeOfString("cookpad.com") != nil {
+            UIApplication.sharedApplication().openURL(request.URL)
+            return false
+        }
         return true
     }
 

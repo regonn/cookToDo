@@ -16,7 +16,7 @@ class IngredientModel {
         let (tb, err) = SD.existingTables()
         if !contains(tb, tableName) {
             if let err =
-                SD.createTable(tableName, withColumnNamesAndTypes: [ "Html": .StringVal ]){
+                SD.createTable(tableName, withColumnNamesAndTypes: [ "Html": .StringVal, "CellHeight": .IntVal ]){
                     
             } else {
                 
@@ -29,7 +29,7 @@ class IngredientModel {
         var result: Int? = nil
         println("Add ingredient")
         println(html)
-        if let err = SD.executeChange("INSERT INTO ? (Html) VALUES(?)", withArgs: [ tableName, html ]){
+        if let err = SD.executeChange("INSERT INTO ? (Html, CellHeight) VALUES(?, ?)", withArgs: [ tableName, html, Int(0) ]){
             println(err)
         } else {
             let (id, err) = SD.lastInsertedRowID()
@@ -47,8 +47,16 @@ class IngredientModel {
     func delete(id: String){
         if let err = SD.executeChange("DELETE FROM ? WHERE ID = ?", withArgs: [tableName, id]){
         }else{
-            println(id + " was deleted.")
+            println("\(id) was deleted.")
         }
+    }
+
+    func updateCellHeight(id: Int, cellHeight: Int) -> Int{
+        if let err = SD.executeChange("UPDATE ? SET CellHeight = ? WHERE ID = ?", withArgs: [tableName, cellHeight, id]) {
+        } else {
+            println("update CellHeight:\(cellHeight)")
+        }
+        return Int(cellHeight)
     }
     
     func all() -> NSMutableArray {
@@ -62,6 +70,8 @@ class IngredientModel {
                 if let id = row["ID"]?.asInt() {
                     var ingredient = Ingredient()
                     var html = row["Html"]?.asString()
+                    var cellHeight = row["CellHeight"]?.asInt()
+                    ingredient.cellHeight = cellHeight!
                     ingredient.html = html!
                     ingredient.id = id
                     ingredients.addObject(ingredient)

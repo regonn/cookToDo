@@ -26,7 +26,6 @@ class ShareViewController: UIViewController {
                 // 取得したURLを表示
                 var objects = NSMutableArray()
 
-                NSLog("\(url.absoluteString)")
                 var fetch_objects: NSArray? = self.shareDefaults?.objectForKey("urls") as? NSArray
                 println(fetch_objects)
                 if fetch_objects == nil {
@@ -35,12 +34,16 @@ class ShareViewController: UIViewController {
                 for item in fetch_objects! {
                     objects.addObject(item)
                 }
-                //fetch_objects.addObject(urlString!)
-                //self.shareDefaults?.setObject(fetch_objects, forKey: "urls")
-                objects.addObject(urlString!)
-                self.shareDefaults?.setObject(objects, forKey: "urls")
-                self.shareDefaults?.synchronize()
-                self.showCopyAlert()
+
+                if urlString!.rangeOfString("cookpad.com/recipe/") != nil {
+                    objects.addObject(urlString!)
+                    self.shareDefaults?.setObject(objects, forKey: "urls")
+                    self.shareDefaults?.synchronize()
+                    self.showCopyAlert()
+                } else {
+                    self.invalidUrlAlert()
+                }
+
             })
         }
         // Do any additional setup after loading the view, typically from a nib.
@@ -82,6 +85,21 @@ class ShareViewController: UIViewController {
             style: .Default,
             handler:{
             (action:UIAlertAction!) -> Void in
+                self.extensionContext!.completeRequestReturningItems(nil, completionHandler: nil)
+        })
+
+        alert.addAction(defaultAction)
+
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
+    func invalidUrlAlert(){
+        let alert = UIAlertController(title: "", message: "現在cookpadのレシピのみに対応しています。", preferredStyle: UIAlertControllerStyle.Alert)
+
+        let defaultAction = UIAlertAction(title: "OK",
+            style: .Default,
+            handler:{
+                (action:UIAlertAction!) -> Void in
                 self.extensionContext!.completeRequestReturningItems(nil, completionHandler: nil)
         })
 

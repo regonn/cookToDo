@@ -71,17 +71,14 @@
                                         <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jlI-uq-tMe">
                                             <rect key="frame" x="8" y="-101" width="84" height="301"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="260" id="dHV-6x-xqx"/>
-                                            </constraints>
                                         </webView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="jlI-uq-tMe" firstAttribute="leading" secondItem="RLR-LW-a6K" secondAttribute="leadingMargin" id="A0N-Aq-9BZ"/>
-                                        <constraint firstItem="jlI-uq-tMe" firstAttribute="top" secondItem="RLR-LW-a6K" secondAttribute="topMargin" constant="10" id="c5d-Hs-vAG"/>
+                                        <constraint firstItem="jlI-uq-tMe" firstAttribute="top" secondItem="RLR-LW-a6K" secondAttribute="topMargin" constant="1" id="c5d-Hs-vAG"/>
                                         <constraint firstAttribute="centerY" secondItem="jlI-uq-tMe" secondAttribute="centerY" id="eTk-rB-798"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="jlI-uq-tMe" secondAttribute="trailing" id="s6H-5j-Zve"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="jlI-uq-tMe" secondAttribute="bottom" constant="10" id="uTP-DH-gl2"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jlI-uq-tMe" secondAttribute="bottom" constant="1" id="uTP-DH-gl2"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
