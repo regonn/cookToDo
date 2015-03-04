@@ -15,13 +15,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
     var shareDefaults = NSUserDefaults(suiteName: "group.jp.sonicgarden.cookToDo")
     var push_objects = NSMutableArray()
     
-
-
     @IBOutlet weak var allClearButton: UIButton!
-    
-    
-    @IBOutlet weak var syncButton: UIButton!
-
 
     override func viewDidLoad() {
 
@@ -30,7 +24,6 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
 
         self.ingredients = ingredientModel.all()
         allClearButton.addTarget(self, action: "showConfirmAlert:", forControlEvents:.TouchUpInside)
-        syncButton.addTarget(self, action: "syncData:", forControlEvents:.TouchUpInside)
 
         var refreshCtl = UIRefreshControl()
 
