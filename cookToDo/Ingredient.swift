@@ -10,6 +10,6 @@ import UIKit
 
 class Ingredient: NSObject {
     var html = String()
-    var id = NSInteger()
+    var id = Int()
     var cellHeight = Int()
 }

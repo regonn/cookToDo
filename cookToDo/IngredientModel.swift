@@ -17,9 +17,6 @@ class IngredientModel {
         if !contains(tb, tableName) {
             if let err =
                 SD.createTable(tableName, withColumnNamesAndTypes: [ "Html": .StringVal, "CellHeight": .IntVal ]){
-                    
-            } else {
-                
             }
         }
         println(SD.databasePath())
@@ -44,7 +41,7 @@ class IngredientModel {
     }
     
     
-    func delete(id: String){
+    func delete(id: Int){
         if let err = SD.executeChange("DELETE FROM ? WHERE ID = ?", withArgs: [tableName, id]){
         }else{
             println("\(id) was deleted.")
@@ -61,7 +58,6 @@ class IngredientModel {
     
     func all() -> NSMutableArray {
         var ingredients = NSMutableArray()
-        println(ingredients.count)
         let (resultSet, err) = SD.executeQuery("SELECT * FROM ? ORDER BY ID DESC", withArgs: [tableName])
         if err != nil {
             println(err)

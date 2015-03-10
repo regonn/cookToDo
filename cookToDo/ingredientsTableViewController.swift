@@ -20,7 +20,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.ingredients = ingredientModel.all()
+        //self.ingredients = ingredientModel.all()
         allClearButton.addTarget(self, action: "showConfirmAlert:", forControlEvents:.TouchUpInside)
 
         var refreshCtl = UIRefreshControl()
@@ -28,12 +28,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
         refreshCtl.addTarget(self, action: "syncData:", forControlEvents: UIControlEvents.ValueChanged)
 
         self.refreshControl = refreshCtl
-   
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.syncData(nil)
     }
 
@@ -63,7 +58,6 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func addToModelFromUrl(urlString: NSString){
@@ -120,17 +114,11 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
         self.push_objects.addObject(url)
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
         self.ingredients = ingredientModel.all()
         return self.ingredients.count
     }
@@ -155,66 +143,9 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
 
         self.tableView.rowHeight = CGFloat(ingredient.cellHeight)
 
-        cell.idLabel.text = String(ingredient.id)
+        cell.ingredient = ingredient
 
         return cell
-    }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-    @IBAction func unwindToList(segue: UIStoryboardSegue) {
-        var source = segue.sourceViewController as ViewController
-        var ingredient: Ingredient? = source.ingredient
-        var html = ingredient?.html
-        println(ingredient?.html)
-        if html != "nil" {
-            ingredient!.id = ingredientModel.add(ingredient!.html)
-            self.ingredients.addObject(ingredient!)
-            self.tableView.reloadData()
-        }
-
     }
 
     // 空だけど editActionsForRowAtIndexPathの起動に必要
@@ -225,8 +156,8 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
         var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
         var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler: {
             (action: UITableViewRowAction!, indexPath: NSIndexPath!) in
-            println("Triggered delete action \(action) atIndexPath: \(indexPath)")
-            self.ingredientModel.delete(cell.idLabel.text!)
+
+            self.ingredientModel.delete(cell.ingredient.id)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             return
         })
@@ -263,5 +194,4 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
 
         self.presentViewController(alert, animated: true, completion: nil)
     }
-
 }

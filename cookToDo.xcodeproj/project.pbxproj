@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4469BB1C1AA683BA009DE843 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 4469BB1B1AA683BA009DE843 /* trash.png */; };
 		44899B9E1A9CEE8F00A10F75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899B9D1A9CEE8F00A10F75 /* AppDelegate.swift */; };
-		44899BA01A9CEE8F00A10F75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899B9F1A9CEE8F00A10F75 /* ViewController.swift */; };
 		44899BA31A9CEE8F00A10F75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44899BA11A9CEE8F00A10F75 /* Main.storyboard */; };
 		44899BA51A9CEE8F00A10F75 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44899BA41A9CEE8F00A10F75 /* Images.xcassets */; };
 		44899BA81A9CEE8F00A10F75 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44899BA61A9CEE8F00A10F75 /* LaunchScreen.xib */; };
@@ -68,7 +67,6 @@
 		44899B981A9CEE8F00A10F75 /* cookToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cookToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44899B9C1A9CEE8F00A10F75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44899B9D1A9CEE8F00A10F75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		44899B9F1A9CEE8F00A10F75 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		44899BA21A9CEE8F00A10F75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44899BA41A9CEE8F00A10F75 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		44899BA71A9CEE8F00A10F75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 			children = (
 				44BC53A81A9DC18A00221195 /* cookToDo.entitlements */,
 				44899B9D1A9CEE8F00A10F75 /* AppDelegate.swift */,
-				44899B9F1A9CEE8F00A10F75 /* ViewController.swift */,
 				44899BA11A9CEE8F00A10F75 /* Main.storyboard */,
 				44899BD31A9CF4CD00A10F75 /* Ingredient.swift */,
 				44899BD71A9CF5B900A10F75 /* IngredientModel.swift */,
@@ -375,7 +372,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44899BA01A9CEE8F00A10F75 /* ViewController.swift in Sources */,
 				44899BCD1A9CF29D00A10F75 /* HTMLNode+XPath.swift in Sources */,
 				44899B9E1A9CEE8F00A10F75 /* AppDelegate.swift in Sources */,
 				44899BCB1A9CF29D00A10F75 /* HTMLDocument.swift in Sources */,

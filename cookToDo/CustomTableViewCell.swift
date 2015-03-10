@@ -9,10 +9,10 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var idLabel: UILabel!
     
     @IBOutlet weak var webView: UIWebView!
+
+    var ingredient = Ingredient()
 
     override func awakeFromNib() {
         super.awakeFromNib()
