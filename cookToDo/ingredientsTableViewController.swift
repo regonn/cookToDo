@@ -14,7 +14,6 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
     var ingredientModel = IngredientModel()
     var shareDefaults = NSUserDefaults(suiteName: "group.jp.sonicgarden.cookToDo")
     var push_objects = NSMutableArray()
-    var maxCellHeight = Int()
     
     @IBOutlet weak var allClearButton: UIButton!
 
