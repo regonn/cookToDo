@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4469BB1C1AA683BA009DE843 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 4469BB1B1AA683BA009DE843 /* trash.png */; };
 		44899B9E1A9CEE8F00A10F75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899B9D1A9CEE8F00A10F75 /* AppDelegate.swift */; };
 		44899BA31A9CEE8F00A10F75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44899BA11A9CEE8F00A10F75 /* Main.storyboard */; };
 		44899BA51A9CEE8F00A10F75 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44899BA41A9CEE8F00A10F75 /* Images.xcassets */; };
@@ -25,6 +24,8 @@
 		44BC539E1A9DBC7E00221195 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BC539D1A9DBC7E00221195 /* ShareViewController.swift */; };
 		44BC53A01A9DBC7E00221195 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44BC539F1A9DBC7E00221195 /* MainInterface.storyboard */; };
 		44BC53A31A9DBC7E00221195 /* importIngredient.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 44BC53991A9DBC7E00221195 /* importIngredient.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		44E115F31AAE902C00F7D7B5 /* themify_e60d(0)_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 44E115F11AAE902C00F7D7B5 /* themify_e60d(0)_120.png */; };
+		44E115F41AAE902C00F7D7B5 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 44E115F21AAE902C00F7D7B5 /* trash.png */; };
 		44FE325C1AA00A9300D0AA24 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE325B1AA00A9300D0AA24 /* CustomTableViewCell.swift */; };
 		44FE326C1AA028A200D0AA24 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44899BA41A9CEE8F00A10F75 /* Images.xcassets */; };
 		44FE32741AA0368000D0AA24 /* themify_e60d(0)_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 44FE32731AA0368000D0AA24 /* themify_e60d(0)_120.png */; };
@@ -63,7 +64,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4469BB1B1AA683BA009DE843 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trash.png; path = cookToDo/resources/trash.png; sourceTree = "<group>"; };
 		44899B981A9CEE8F00A10F75 /* cookToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cookToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44899B9C1A9CEE8F00A10F75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44899B9D1A9CEE8F00A10F75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,7 +89,9 @@
 		44BC539F1A9DBC7E00221195 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		44BC53A81A9DC18A00221195 /* cookToDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cookToDo.entitlements; sourceTree = "<group>"; };
 		44BC53A91A9DC19800221195 /* importIngredient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = importIngredient.entitlements; sourceTree = "<group>"; };
-		44FE325B1AA00A9300D0AA24 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = cookToDo/CustomTableViewCell.swift; sourceTree = "<group>"; };
+		44E115F11AAE902C00F7D7B5 /* themify_e60d(0)_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "themify_e60d(0)_120.png"; sourceTree = "<group>"; };
+		44E115F21AAE902C00F7D7B5 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
+		44FE325B1AA00A9300D0AA24 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		44FE32731AA0368000D0AA24 /* themify_e60d(0)_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "themify_e60d(0)_120.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,8 +125,6 @@
 		44899B8F1A9CEE8F00A10F75 = {
 			isa = PBXGroup;
 			children = (
-				4469BB1B1AA683BA009DE843 /* trash.png */,
-				44FE325B1AA00A9300D0AA24 /* CustomTableViewCell.swift */,
 				44899BD01A9CF2C400A10F75 /* libxml2.dylib */,
 				44899BCE1A9CF2BE00A10F75 /* libsqlite3.dylib */,
 				44899BD21A9CF49100A10F75 /* cookToDo-Bridging-Header.h */,
@@ -154,10 +154,12 @@
 				44899BD31A9CF4CD00A10F75 /* Ingredient.swift */,
 				44899BD71A9CF5B900A10F75 /* IngredientModel.swift */,
 				44899BC81A9CF29D00A10F75 /* HTMLDocument.swift */,
+				44FE325B1AA00A9300D0AA24 /* CustomTableViewCell.swift */,
 				44899BC91A9CF29D00A10F75 /* HTMLNode.swift */,
 				44899BCA1A9CF29D00A10F75 /* HTMLNode+XPath.swift */,
 				44899BC41A9CF28D00A10F75 /* SwiftData.swift */,
 				44899BBD1A9CEFF300A10F75 /* ingredientsTableViewController.swift */,
+				44E115F01AAE902C00F7D7B5 /* resources */,
 				44899BA41A9CEE8F00A10F75 /* Images.xcassets */,
 				44899BA61A9CEE8F00A10F75 /* LaunchScreen.xib */,
 				44899B9B1A9CEE8F00A10F75 /* Supporting Files */,
@@ -208,6 +210,15 @@
 				44BC539C1A9DBC7E00221195 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		44E115F01AAE902C00F7D7B5 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				44E115F11AAE902C00F7D7B5 /* themify_e60d(0)_120.png */,
+				44E115F21AAE902C00F7D7B5 /* trash.png */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 		44FE325D1AA01EDD00D0AA24 /* resources */ = {
@@ -341,9 +352,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				44899BA31A9CEE8F00A10F75 /* Main.storyboard in Resources */,
+				44E115F31AAE902C00F7D7B5 /* themify_e60d(0)_120.png in Resources */,
 				44FE32741AA0368000D0AA24 /* themify_e60d(0)_120.png in Resources */,
 				44899BA81A9CEE8F00A10F75 /* LaunchScreen.xib in Resources */,
-				4469BB1C1AA683BA009DE843 /* trash.png in Resources */,
+				44E115F41AAE902C00F7D7B5 /* trash.png in Resources */,
 				44899BA51A9CEE8F00A10F75 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

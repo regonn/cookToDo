@@ -20,16 +20,20 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //self.ingredients = ingredientModel.all()
         allClearButton.addTarget(self, action: "showConfirmAlert:", forControlEvents:.TouchUpInside)
+
+        self.setRefreshCtl()
+
+        self.syncData(nil)
+    }
+
+    func setRefreshCtl(){
 
         var refreshCtl = UIRefreshControl()
 
         refreshCtl.addTarget(self, action: "syncData:", forControlEvents: UIControlEvents.ValueChanged)
 
         self.refreshControl = refreshCtl
-
-        self.syncData(nil)
     }
 
     func deleteAll() {
@@ -48,7 +52,6 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
             }
         }
         self.shareDefaults?.setObject(self.push_objects, forKey: "urls")
-        println("\(self.push_objects)")
         self.shareDefaults?.synchronize()
         self.push_objects = NSMutableArray()
         self.ingredients = ingredientModel.all()
@@ -89,7 +92,6 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
 
                     var servings = body?.nodeForXPath("//span[@class='servings_for yield']")
                     if servings != nil {
-                        println("get servings")
                         var servingsHTML :String? = servings?.HTMLContent
                         titleHTML = titleHTML + servingsHTML!
                     }

@@ -19,8 +19,8 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1jG-K8-TlR" id="RLR-LW-a6K">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jlI-uq-tMe">
-                                            <rect key="frame" x="8" y="-101" width="84" height="301"/>
+                                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlI-uq-tMe">
+                                            <rect key="frame" x="8" y="9" width="584" height="81.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </webView>
                                     </subviews>

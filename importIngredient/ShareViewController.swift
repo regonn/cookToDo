@@ -23,7 +23,7 @@ class ShareViewController: UIViewController {
 
                 let url = urlItem as NSURL;
                 var urlString = url.absoluteString
-                // 取得したURLを表示
+
                 var objects = NSMutableArray()
 
                 var fetch_objects: NSArray? = self.shareDefaults?.objectForKey("urls") as? NSArray
@@ -39,46 +39,16 @@ class ShareViewController: UIViewController {
                     objects.addObject(urlString!)
                     self.shareDefaults?.setObject(objects, forKey: "urls")
                     self.shareDefaults?.synchronize()
-                    self.showCopyAlert()
+                    self.showRegisteredAlert()
                 } else {
                     self.invalidUrlAlert()
                 }
 
             })
         }
-        // Do any additional setup after loading the view, typically from a nib.
-
     }
 
-
-    /*
-    override func didSelectPost() {
-
-        let inputItem = self.extensionContext!.inputItems.first as NSExtensionItem
-        let itemProvider = inputItem.attachments![0] as NSItemProvider
-
-        if (itemProvider.hasItemConformingToTypeIdentifier("public.url")) {
-            itemProvider.loadItemForTypeIdentifier("public.url", options: nil, completionHandler: { (urlItem, error) in
-
-                let url = urlItem as NSURL;
-                var urlString = url.absoluteString
-                // 取得したURLを表示
-                NSLog("\(url.absoluteString)")
-                var fetch_objects: NSMutableArray? = self.shareDefaults?.objectForKey("urls") as? NSMutableArray
-                fetch_objects!.addObject(urlString!)
-                self.shareDefaults?.setObject(fetch_objects, forKey: "urls")
-                self.shareDefaults?.synchronize()
-                
-                println(fetch_objects)
-                self.showCopyAlert()
-            self.extensionContext!.completeRequestReturningItems([url], completionHandler: nil)
-
-            })
-        }
-    }
-    */
-
-    func showCopyAlert(){
+    func showRegisteredAlert(){
         let alert = UIAlertController(title: "", message: "登録できました", preferredStyle: UIAlertControllerStyle.Alert)
 
         let defaultAction = UIAlertAction(title: "OK",

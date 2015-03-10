@@ -10,7 +10,7 @@ import Foundation
 
 
 class IngredientModel {
-    var tableName = "ingredients"
+    let tableName = "ingredients"
     
     init() {
         let (tb, err) = SD.existingTables()
