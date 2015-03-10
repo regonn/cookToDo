@@ -26,6 +26,7 @@
 		44BC53A31A9DBC7E00221195 /* importIngredient.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 44BC53991A9DBC7E00221195 /* importIngredient.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		44E115F31AAE902C00F7D7B5 /* themify_e60d(0)_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 44E115F11AAE902C00F7D7B5 /* themify_e60d(0)_120.png */; };
 		44E115F41AAE902C00F7D7B5 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 44E115F21AAE902C00F7D7B5 /* trash.png */; };
+		44E115F61AAE93DA00F7D7B5 /* HTMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E115F51AAE93DA00F7D7B5 /* HTMLModel.swift */; };
 		44FE325C1AA00A9300D0AA24 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE325B1AA00A9300D0AA24 /* CustomTableViewCell.swift */; };
 		44FE326C1AA028A200D0AA24 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44899BA41A9CEE8F00A10F75 /* Images.xcassets */; };
 		44FE32741AA0368000D0AA24 /* themify_e60d(0)_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 44FE32731AA0368000D0AA24 /* themify_e60d(0)_120.png */; };
@@ -91,6 +92,7 @@
 		44BC53A91A9DC19800221195 /* importIngredient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = importIngredient.entitlements; sourceTree = "<group>"; };
 		44E115F11AAE902C00F7D7B5 /* themify_e60d(0)_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "themify_e60d(0)_120.png"; sourceTree = "<group>"; };
 		44E115F21AAE902C00F7D7B5 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
+		44E115F51AAE93DA00F7D7B5 /* HTMLModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLModel.swift; sourceTree = "<group>"; };
 		44FE325B1AA00A9300D0AA24 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		44FE32731AA0368000D0AA24 /* themify_e60d(0)_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "themify_e60d(0)_120.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +161,7 @@
 				44899BCA1A9CF29D00A10F75 /* HTMLNode+XPath.swift */,
 				44899BC41A9CF28D00A10F75 /* SwiftData.swift */,
 				44899BBD1A9CEFF300A10F75 /* ingredientsTableViewController.swift */,
+				44E115F51AAE93DA00F7D7B5 /* HTMLModel.swift */,
 				44E115F01AAE902C00F7D7B5 /* resources */,
 				44899BA41A9CEE8F00A10F75 /* Images.xcassets */,
 				44899BA61A9CEE8F00A10F75 /* LaunchScreen.xib */,
@@ -386,6 +389,7 @@
 			files = (
 				44899BCD1A9CF29D00A10F75 /* HTMLNode+XPath.swift in Sources */,
 				44899B9E1A9CEE8F00A10F75 /* AppDelegate.swift in Sources */,
+				44E115F61AAE93DA00F7D7B5 /* HTMLModel.swift in Sources */,
 				44899BCB1A9CF29D00A10F75 /* HTMLDocument.swift in Sources */,
 				44899BD41A9CF4CD00A10F75 /* Ingredient.swift in Sources */,
 				44899BBE1A9CEFF300A10F75 /* ingredientsTableViewController.swift in Sources */,

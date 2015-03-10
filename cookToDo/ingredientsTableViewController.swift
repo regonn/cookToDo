@@ -28,16 +28,17 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
     }
 
     func setRefreshCtl(){
-
         var refreshCtl = UIRefreshControl()
-
         refreshCtl.addTarget(self, action: "syncData:", forControlEvents: UIControlEvents.ValueChanged)
-
         self.refreshControl = refreshCtl
     }
 
     func deleteAll() {
         ingredientModel.deleteAll()
+        self.reloadView()
+    }
+
+    func reloadView() {
         self.ingredients = ingredientModel.all()
         self.tableView.reloadData()
     }
@@ -54,8 +55,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
         self.shareDefaults?.setObject(self.push_objects, forKey: "urls")
         self.shareDefaults?.synchronize()
         self.push_objects = NSMutableArray()
-        self.ingredients = ingredientModel.all()
-        self.tableView.reloadData()
+        self.reloadView()
         self.refreshControl?.endRefreshing()
     }
 
@@ -136,6 +136,7 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
         var html = ingredient.html as String
 
         webView.loadHTMLString(html, baseURL: nil)
+
         webView.delegate = self
         webView.scrollView.scrollEnabled = false
 
