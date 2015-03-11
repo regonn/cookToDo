@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4457198F1AAFC40600D8D5CD /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4457198E1AAFC40600D8D5CD /* TutorialViewController.swift */; };
+		445719941AAFC45B00D8D5CD /* tutorial1.png in Resources */ = {isa = PBXBuildFile; fileRef = 445719901AAFC45B00D8D5CD /* tutorial1.png */; };
+		445719951AAFC45B00D8D5CD /* tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = 445719911AAFC45B00D8D5CD /* tutorial2.png */; };
+		445719961AAFC45B00D8D5CD /* tutorial3.png in Resources */ = {isa = PBXBuildFile; fileRef = 445719921AAFC45B00D8D5CD /* tutorial3.png */; };
+		445719971AAFC45B00D8D5CD /* tutorial4.png in Resources */ = {isa = PBXBuildFile; fileRef = 445719931AAFC45B00D8D5CD /* tutorial4.png */; };
 		44899B9E1A9CEE8F00A10F75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899B9D1A9CEE8F00A10F75 /* AppDelegate.swift */; };
 		44899BA31A9CEE8F00A10F75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44899BA11A9CEE8F00A10F75 /* Main.storyboard */; };
 		44899BA51A9CEE8F00A10F75 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44899BA41A9CEE8F00A10F75 /* Images.xcassets */; };
 		44899BA81A9CEE8F00A10F75 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44899BA61A9CEE8F00A10F75 /* LaunchScreen.xib */; };
 		44899BB41A9CEE9000A10F75 /* cookToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899BB31A9CEE9000A10F75 /* cookToDoTests.swift */; };
 		44899BBE1A9CEFF300A10F75 /* ingredientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899BBD1A9CEFF300A10F75 /* ingredientsTableViewController.swift */; };
-		44899BC61A9CF28D00A10F75 /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899BC41A9CF28D00A10F75 /* SwiftData.swift */; };
-		44899BCB1A9CF29D00A10F75 /* HTMLDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899BC81A9CF29D00A10F75 /* HTMLDocument.swift */; };
-		44899BCC1A9CF29D00A10F75 /* HTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899BC91A9CF29D00A10F75 /* HTMLNode.swift */; };
-		44899BCD1A9CF29D00A10F75 /* HTMLNode+XPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899BCA1A9CF29D00A10F75 /* HTMLNode+XPath.swift */; };
 		44899BCF1A9CF2BE00A10F75 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 44899BCE1A9CF2BE00A10F75 /* libsqlite3.dylib */; };
 		44899BD11A9CF2C400A10F75 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 44899BD01A9CF2C400A10F75 /* libxml2.dylib */; };
 		44899BD41A9CF4CD00A10F75 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899BD31A9CF4CD00A10F75 /* Ingredient.swift */; };
@@ -26,7 +27,10 @@
 		44BC53A31A9DBC7E00221195 /* importIngredient.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 44BC53991A9DBC7E00221195 /* importIngredient.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		44E115F31AAE902C00F7D7B5 /* themify_e60d(0)_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 44E115F11AAE902C00F7D7B5 /* themify_e60d(0)_120.png */; };
 		44E115F41AAE902C00F7D7B5 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 44E115F21AAE902C00F7D7B5 /* trash.png */; };
-		44E115F61AAE93DA00F7D7B5 /* HTMLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E115F51AAE93DA00F7D7B5 /* HTMLModel.swift */; };
+		44E115FC1AAE94DC00F7D7B5 /* HTMLDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E115F81AAE94DC00F7D7B5 /* HTMLDocument.swift */; };
+		44E115FD1AAE94DC00F7D7B5 /* HTMLNode+XPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E115F91AAE94DC00F7D7B5 /* HTMLNode+XPath.swift */; };
+		44E115FE1AAE94DC00F7D7B5 /* HTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E115FA1AAE94DC00F7D7B5 /* HTMLNode.swift */; };
+		44E115FF1AAE94DC00F7D7B5 /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E115FB1AAE94DC00F7D7B5 /* SwiftData.swift */; };
 		44FE325C1AA00A9300D0AA24 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FE325B1AA00A9300D0AA24 /* CustomTableViewCell.swift */; };
 		44FE326C1AA028A200D0AA24 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44899BA41A9CEE8F00A10F75 /* Images.xcassets */; };
 		44FE32741AA0368000D0AA24 /* themify_e60d(0)_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 44FE32731AA0368000D0AA24 /* themify_e60d(0)_120.png */; };
@@ -65,6 +69,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4457198E1AAFC40600D8D5CD /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		445719901AAFC45B00D8D5CD /* tutorial1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tutorial1.png; path = cookToDo/resources/tutorial1.png; sourceTree = "<group>"; };
+		445719911AAFC45B00D8D5CD /* tutorial2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tutorial2.png; path = cookToDo/resources/tutorial2.png; sourceTree = "<group>"; };
+		445719921AAFC45B00D8D5CD /* tutorial3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tutorial3.png; path = cookToDo/resources/tutorial3.png; sourceTree = "<group>"; };
+		445719931AAFC45B00D8D5CD /* tutorial4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tutorial4.png; path = cookToDo/resources/tutorial4.png; sourceTree = "<group>"; };
 		44899B981A9CEE8F00A10F75 /* cookToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cookToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44899B9C1A9CEE8F00A10F75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44899B9D1A9CEE8F00A10F75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,10 +84,6 @@
 		44899BB21A9CEE9000A10F75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44899BB31A9CEE9000A10F75 /* cookToDoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cookToDoTests.swift; sourceTree = "<group>"; };
 		44899BBD1A9CEFF300A10F75 /* ingredientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ingredientsTableViewController.swift; sourceTree = "<group>"; };
-		44899BC41A9CF28D00A10F75 /* SwiftData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
-		44899BC81A9CF29D00A10F75 /* HTMLDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLDocument.swift; sourceTree = "<group>"; };
-		44899BC91A9CF29D00A10F75 /* HTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
-		44899BCA1A9CF29D00A10F75 /* HTMLNode+XPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTMLNode+XPath.swift"; sourceTree = "<group>"; };
 		44899BCE1A9CF2BE00A10F75 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		44899BD01A9CF2C400A10F75 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		44899BD21A9CF49100A10F75 /* cookToDo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cookToDo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -92,7 +97,10 @@
 		44BC53A91A9DC19800221195 /* importIngredient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = importIngredient.entitlements; sourceTree = "<group>"; };
 		44E115F11AAE902C00F7D7B5 /* themify_e60d(0)_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "themify_e60d(0)_120.png"; sourceTree = "<group>"; };
 		44E115F21AAE902C00F7D7B5 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
-		44E115F51AAE93DA00F7D7B5 /* HTMLModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLModel.swift; sourceTree = "<group>"; };
+		44E115F81AAE94DC00F7D7B5 /* HTMLDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLDocument.swift; sourceTree = "<group>"; };
+		44E115F91AAE94DC00F7D7B5 /* HTMLNode+XPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTMLNode+XPath.swift"; sourceTree = "<group>"; };
+		44E115FA1AAE94DC00F7D7B5 /* HTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
+		44E115FB1AAE94DC00F7D7B5 /* SwiftData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
 		44FE325B1AA00A9300D0AA24 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		44FE32731AA0368000D0AA24 /* themify_e60d(0)_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "themify_e60d(0)_120.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +135,11 @@
 		44899B8F1A9CEE8F00A10F75 = {
 			isa = PBXGroup;
 			children = (
+				445719901AAFC45B00D8D5CD /* tutorial1.png */,
+				445719911AAFC45B00D8D5CD /* tutorial2.png */,
+				445719921AAFC45B00D8D5CD /* tutorial3.png */,
+				445719931AAFC45B00D8D5CD /* tutorial4.png */,
+				4457198E1AAFC40600D8D5CD /* TutorialViewController.swift */,
 				44899BD01A9CF2C400A10F75 /* libxml2.dylib */,
 				44899BCE1A9CF2BE00A10F75 /* libsqlite3.dylib */,
 				44899BD21A9CF49100A10F75 /* cookToDo-Bridging-Header.h */,
@@ -155,13 +168,9 @@
 				44899BA11A9CEE8F00A10F75 /* Main.storyboard */,
 				44899BD31A9CF4CD00A10F75 /* Ingredient.swift */,
 				44899BD71A9CF5B900A10F75 /* IngredientModel.swift */,
-				44899BC81A9CF29D00A10F75 /* HTMLDocument.swift */,
 				44FE325B1AA00A9300D0AA24 /* CustomTableViewCell.swift */,
-				44899BC91A9CF29D00A10F75 /* HTMLNode.swift */,
-				44899BCA1A9CF29D00A10F75 /* HTMLNode+XPath.swift */,
-				44899BC41A9CF28D00A10F75 /* SwiftData.swift */,
+				44E115F71AAE94DC00F7D7B5 /* thirdPartyLib */,
 				44899BBD1A9CEFF300A10F75 /* ingredientsTableViewController.swift */,
-				44E115F51AAE93DA00F7D7B5 /* HTMLModel.swift */,
 				44E115F01AAE902C00F7D7B5 /* resources */,
 				44899BA41A9CEE8F00A10F75 /* Images.xcassets */,
 				44899BA61A9CEE8F00A10F75 /* LaunchScreen.xib */,
@@ -222,6 +231,17 @@
 				44E115F21AAE902C00F7D7B5 /* trash.png */,
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		44E115F71AAE94DC00F7D7B5 /* thirdPartyLib */ = {
+			isa = PBXGroup;
+			children = (
+				44E115F81AAE94DC00F7D7B5 /* HTMLDocument.swift */,
+				44E115F91AAE94DC00F7D7B5 /* HTMLNode+XPath.swift */,
+				44E115FA1AAE94DC00F7D7B5 /* HTMLNode.swift */,
+				44E115FB1AAE94DC00F7D7B5 /* SwiftData.swift */,
+			);
+			path = thirdPartyLib;
 			sourceTree = "<group>";
 		};
 		44FE325D1AA01EDD00D0AA24 /* resources */ = {
@@ -354,11 +374,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				445719971AAFC45B00D8D5CD /* tutorial4.png in Resources */,
 				44899BA31A9CEE8F00A10F75 /* Main.storyboard in Resources */,
 				44E115F31AAE902C00F7D7B5 /* themify_e60d(0)_120.png in Resources */,
 				44FE32741AA0368000D0AA24 /* themify_e60d(0)_120.png in Resources */,
 				44899BA81A9CEE8F00A10F75 /* LaunchScreen.xib in Resources */,
 				44E115F41AAE902C00F7D7B5 /* trash.png in Resources */,
+				445719941AAFC45B00D8D5CD /* tutorial1.png in Resources */,
+				445719961AAFC45B00D8D5CD /* tutorial3.png in Resources */,
+				445719951AAFC45B00D8D5CD /* tutorial2.png in Resources */,
 				44899BA51A9CEE8F00A10F75 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,16 +411,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44899BCD1A9CF29D00A10F75 /* HTMLNode+XPath.swift in Sources */,
 				44899B9E1A9CEE8F00A10F75 /* AppDelegate.swift in Sources */,
-				44E115F61AAE93DA00F7D7B5 /* HTMLModel.swift in Sources */,
-				44899BCB1A9CF29D00A10F75 /* HTMLDocument.swift in Sources */,
 				44899BD41A9CF4CD00A10F75 /* Ingredient.swift in Sources */,
+				4457198F1AAFC40600D8D5CD /* TutorialViewController.swift in Sources */,
+				44E115FF1AAE94DC00F7D7B5 /* SwiftData.swift in Sources */,
+				44E115FC1AAE94DC00F7D7B5 /* HTMLDocument.swift in Sources */,
+				44E115FD1AAE94DC00F7D7B5 /* HTMLNode+XPath.swift in Sources */,
 				44899BBE1A9CEFF300A10F75 /* ingredientsTableViewController.swift in Sources */,
 				44FE325C1AA00A9300D0AA24 /* CustomTableViewCell.swift in Sources */,
 				44899BD81A9CF5B900A10F75 /* IngredientModel.swift in Sources */,
-				44899BCC1A9CF29D00A10F75 /* HTMLNode.swift in Sources */,
-				44899BC61A9CF28D00A10F75 /* SwiftData.swift in Sources */,
+				44E115FE1AAE94DC00F7D7B5 /* HTMLNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,6 +27,14 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
         self.syncData(nil)
     }
 
+    override func viewDidAppear(animated: Bool) {
+        let tutorial = TutorialViewController();
+        if (tutorial.isTutorialDone()){
+            tutorial.pageImagesArr = ["tutorial1.png","tutorial2.png","tutorial3.png","tutorial4.png"];
+            self.presentViewController(tutorial, animated: true, completion: nil)
+        }
+    }
+
     func setRefreshCtl(){
         var refreshCtl = UIRefreshControl()
         refreshCtl.addTarget(self, action: "syncData:", forControlEvents: UIControlEvents.ValueChanged)
@@ -46,10 +54,10 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
     func syncData(sender:UIButton!) {
         println("sync")
         self.shareDefaults?.synchronize()
-        if var objects: NSArray = shareDefaults?.objectForKey("urls") as? NSArray {
-            for object in objects {
-                println(object)
-                self.addToModelFromUrl(object as NSString)
+        if var urls: NSArray = shareDefaults?.objectForKey("urls") as? NSArray {
+            for url in urls {
+                println(url)
+                self.addToModelFromUrl(url as String)
             }
         }
         self.shareDefaults?.setObject(self.push_objects, forKey: "urls")
@@ -79,9 +87,9 @@ class ingredientsTableViewController: UITableViewController, UIWebViewDelegate, 
                     var title = htmlDocument?.title
                     if title == nil {
                         title = "Unknown title"
+                        println("failed getting title")
                     }
                     var titleHTML = "<a href='\(urlString)'><h4>\(title!)</h4></a>"
-                    println("HTML:\(titleHTML)")
                     
                     var ingredients = body?.nodeForXPath("//div[@id='ingredients_list']")
                     if ingredients == nil {
