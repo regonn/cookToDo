@@ -12,6 +12,7 @@
 		445719951AAFC45B00D8D5CD /* tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = 445719911AAFC45B00D8D5CD /* tutorial2.png */; };
 		445719961AAFC45B00D8D5CD /* tutorial3.png in Resources */ = {isa = PBXBuildFile; fileRef = 445719921AAFC45B00D8D5CD /* tutorial3.png */; };
 		445719971AAFC45B00D8D5CD /* tutorial4.png in Resources */ = {isa = PBXBuildFile; fileRef = 445719931AAFC45B00D8D5CD /* tutorial4.png */; };
+		447606781ABC3CD400694392 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 44899BD01A9CF2C400A10F75 /* libxml2.dylib */; };
 		44899B9E1A9CEE8F00A10F75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44899B9D1A9CEE8F00A10F75 /* AppDelegate.swift */; };
 		44899BA31A9CEE8F00A10F75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44899BA11A9CEE8F00A10F75 /* Main.storyboard */; };
 		44899BA51A9CEE8F00A10F75 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44899BA41A9CEE8F00A10F75 /* Images.xcassets */; };
@@ -126,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				447606781ABC3CD400694392 /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

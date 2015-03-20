@@ -15,6 +15,10 @@ class ShareViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.showConfirmAlert()
+    }
+
+    func setURL(){
         let inputItem = self.extensionContext!.inputItems.first as NSExtensionItem
         let itemProvider = inputItem.attachments![0] as NSItemProvider
 
@@ -48,6 +52,29 @@ class ShareViewController: UIViewController {
         }
     }
 
+    func showConfirmAlert(){
+        let alert = UIAlertController(title: "", message: "このレシピを登録します。よろしいですか？", preferredStyle: UIAlertControllerStyle.Alert)
+        let defaultAction = UIAlertAction(title: "OK",
+            style: .Default,
+            handler:{(action:UIAlertAction!) -> Void in
+                self.setURL()
+        })
+
+        let cancelAction:UIAlertAction = UIAlertAction(title: "Cancel",
+            style: UIAlertActionStyle.Cancel,
+            handler:{
+                (action:UIAlertAction!) -> Void in
+                println("Cancel")
+                self.extensionContext!.completeRequestReturningItems(nil, completionHandler: nil)
+        })
+
+        alert.addAction(defaultAction)
+        alert.addAction(cancelAction)
+
+        self.presentViewController(alert, animated: true, completion: nil)
+
+    }
+
     func showRegisteredAlert(){
         let alert = UIAlertController(title: "", message: "登録できました", preferredStyle: UIAlertControllerStyle.Alert)
 
@@ -77,5 +104,4 @@ class ShareViewController: UIViewController {
 
         self.presentViewController(alert, animated: true, completion: nil)
     }
-
 }
