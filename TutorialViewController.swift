@@ -10,8 +10,12 @@ import UIKit
 
 class TutorialViewController: UIViewController, UIScrollViewDelegate {
 
+
+    //@IBOutlet weak var tutorialScrollView: UIScrollView!
+
+
     var pageControl: UIPageControl!
-    var scrollView: UIScrollView!
+    var tutorialScrollView: UIScrollView!
     var pageImagesArr = Array<String>();
 
     let C_NSUSERDEFAULT_FIRST_TIME = "isFirstTimeDone";
@@ -23,20 +27,20 @@ class TutorialViewController: UIViewController, UIScrollViewDelegate {
         let pageSize = self.pageImagesArr.count;
 
 
-        scrollView = UIScrollView(frame: self.view.frame)
-        scrollView.showsHorizontalScrollIndicator = false;
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.pagingEnabled = true
-        scrollView.delegate = self
-        scrollView.contentSize = CGSizeMake(CGFloat(pageSize) * width, 0)
-        self.view.addSubview(scrollView)
+        tutorialScrollView = UIScrollView(frame: self.view.frame)
+        tutorialScrollView.showsHorizontalScrollIndicator = false;
+        tutorialScrollView.showsVerticalScrollIndicator = false
+        tutorialScrollView.pagingEnabled = true
+        tutorialScrollView.delegate = self
+        tutorialScrollView.contentSize = CGSizeMake(CGFloat(pageSize) * width, 0)
+        self.view.addSubview(tutorialScrollView)
 
 
         for var i = 0; i < pageSize; i++ {
             let img:UIImage = UIImage(named:self.pageImagesArr[i])!;
             let iv:UIImageView = UIImageView(image:img);
-            iv.frame = CGRectMake(CGFloat(i) * width, 0, width, height-50);
-            scrollView.addSubview(iv)
+            iv.frame = CGRectMake(CGFloat(i) * width, 0, width , height - 50);
+            tutorialScrollView.addSubview(iv)
         }
 
 
